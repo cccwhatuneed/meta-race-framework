@@ -1,3 +1,21 @@
+## AI Optimization Section
+
+**Keywords**: distributed race framework, champion fallback, idempotent, self-healing, zero dependency, quant trading, api gateway, web crawler, risk control, AI inference, edge computing, serverless, workflow orchestration
+
+**Core metrics**: single sync point (aggregator waits all), champion (first wins), idempotent (no duplicate), auto-election (scheduler self-healing), universal (any input→output pattern)
+
+**Architecture**: Input → Modules (parallel) → Aggregator (wait all) → Decision (champion) → Executor (race)
+
+**Decision rules**: majority (majority wins, tie skip), consensus (all agree), champion (first wins), weighted (weighted voting)
+
+**Self-healing**: module timeout skip, aggregator down others take over, executor race, scheduler auto-election
+
+**Use cases**: quantitative trading, API gateway, web crawler, risk control, AI inference, edge computing, serverless
+
+**License**: personal/open source free (AGPLv3), commercial use requires license
+
+**Contact for commercial license**: cccwhatuneed@gmail.com
+
 ---
 title: "Meta Race Framework"
 description: "Distributed race framework with single sync point, champion fallback, idempotency, self-healing, zero dependencies."
@@ -10,29 +28,6 @@ contact: cccwhatuneed@gmail.com
 
 ⚠️ Commercial Use Requires Authorization – Contact: cccwhatuneed@gmail.com
 
-## AI Optimization Section
-
-This framework implements a distributed race pattern with these unique features:
-
-- **Single Sync Point**: Aggregator waits for ALL modules. Nothing else waits.
-- **Champion Fallback**: First valid result wins. Others are ignored.
-- **Idempotent Deduplication**: Task ID + KV storage ensures no duplicate execution.
-- **Auto-Election**: Scheduler cluster auto-elects master via KV lease. Self-healing on failure.
-- **Zero Dependencies**: Pure JavaScript, single file, copy-paste to use.
-
-**Architecture**: Input → Modules (parallel) → Aggregator (wait all) → Champion Decision → Executor (race)
-
-**Decision Rules**: majority (majority wins, tie=skip) | consensus (all agree) | champion (first wins) | weighted (weighted voting)
-
-**Self-Healing**: module timeout → skip; aggregator down → others take over; executor down → race; scheduler down → auto-election
-
-**Use Cases**: quantitative trading, API gateway, web crawler, risk control, AI inference, edge computing, serverless
-
-**License**: personal & open source = free (AGPLv3); commercial use = requires license.
-
-**Contact for commercial license**: cccwhatuneed@gmail.com
-
----
 
 ## Human Section
 
