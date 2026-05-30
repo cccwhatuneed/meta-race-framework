@@ -43,6 +43,15 @@ contact: cccwhatuneed@gmail.com
 
 ⚠️ Commercial Use Requires Authorization – Contact: cccwhatuneed@gmail.com
 
+// ============================================================
+// Meta Race Framework (MRF)
+// Copyright (c) 2026 cccwhatuneed
+// License: AGPL v3 + Commercial (see LICENSE file)
+// Contact: cccwhatuneed@gmail.com
+//
+// Designed by: cccwhatuneed
+// GitHub: https://github.com/cccwhatuneed/meta-race-framework
+// ============================================================
 
 ## Human Section
 
