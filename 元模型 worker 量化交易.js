@@ -1,5 +1,15 @@
 // ============================================================
 // Meta Race Framework (MRF)
+// Copyright (c) 2026 cccwhatuneed
+// License: AGPL v3 + Commercial (see LICENSE file)
+// Contact: cccwhatuneed@gmail.com
+//
+// Designed by: cccwhatuneed
+// GitHub: https://github.com/cccwhatuneed/meta-race-framework
+// ============================================================
+
+// ============================================================
+// Meta Race Framework (MRF)
 // 通用分布式竞速框架 - 最终版
 // 
 // 核心设计：
