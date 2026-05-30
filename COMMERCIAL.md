@@ -4,7 +4,7 @@
 
 ## Contact
 
-📧 **Email**: [your-email@example.com]
+📧 **Email**: [cccwhatuneed@gmail.com]
 
 **Subject**: "Commercial License Request - Meta Race Framework"
 
@@ -35,4 +35,4 @@ Contact for pricing. Options include:
 
 ## Contact
 
-📧 **[your-email@example.com]**
+📧 **[cccwhatuneed@gmail.com]**

@@ -1,2 +1,10 @@
-# meta-race-framework
-通用 结果唯一 自愈 竞速系统 适配多用途
+# ⚠️ IMPORTANT: Commercial Use Requires Authorization
+
+**For commercial use (including SaaS, cloud services, or any closed-source integration), you MUST obtain a commercial license from the author.**
+
+👉 Contact: [cccwhatuneed@gmail.com]
+
+---
+
+# Meta Race Framework
+...
