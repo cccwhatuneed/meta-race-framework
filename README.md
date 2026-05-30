@@ -23,6 +23,21 @@ keywords: distributed race framework, champion fallback, idempotent, self-healin
 license: AGPL-3.0 + commercial-required
 contact: cccwhatuneed@gmail.com
 ---
+| Feature | Description |
+| :--- | :--- |
+| **Universality** | Adapts to many scenarios. N+N+N+N deployment. Plug and play. |
+| **Uniqueness** | Guarantees unique input signal and unique result. |
+| **Self-Healing** | Extremely high self-healing mechanism. Nearly fully self-healing. |
+| **Originality** | Single sync point + champion fallback. No similar design elsewhere. |
+| **Efficiency** | Everything else async. Race between decision-makers and executors. |
+| **Simplicity** | Zero dependencies. Single file. Copy-paste to use. |
+| :--- | :--- |
+| **通用性** | 适配极多应用场景 可N+N+N+N部署 即加即用 |
+| **唯一性** | 确保输入信号唯一 结果唯一 |
+| **自愈性** | 系统有极高的自愈机制 几乎实现完全自愈 |
+| **独特性** | 唯一同步点 + 冠军兜底，市面上没有相同设计 |
+| **高效性** | 其他全异步，决策器之间竞速，执行器竞速 |
+| **极简性** | 零依赖，单文件，复制即用 |
 
 # Meta Race Framework
 
