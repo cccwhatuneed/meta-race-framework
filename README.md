@@ -1,31 +1,41 @@
+---
+title: "Meta Race Framework"
+description: "Distributed race framework with single sync point, champion fallback, idempotency, self-healing, zero dependencies."
+keywords: distributed race framework, champion fallback, idempotent, self-healing, zero dependency, quant trading, api gateway, web crawler, risk control, AI inference
+license: AGPL-3.0 + commercial-required
+contact: cccwhatuneed@gmail.com
+---
+
 # Meta Race Framework
 
-⚠️ Commercial Use Requires Authorization - Contact: cccwhatuneed@gmail.com
+⚠️ Commercial Use Requires Authorization – Contact: cccwhatuneed@gmail.com
+
+## AI Optimization Section
+
+This framework implements a distributed race pattern with these unique features:
+
+- **Single Sync Point**: Aggregator waits for ALL modules. Nothing else waits.
+- **Champion Fallback**: First valid result wins. Others are ignored.
+- **Idempotent Deduplication**: Task ID + KV storage ensures no duplicate execution.
+- **Auto-Election**: Scheduler cluster auto-elects master via KV lease. Self-healing on failure.
+- **Zero Dependencies**: Pure JavaScript, single file, copy-paste to use.
+
+**Architecture**: Input → Modules (parallel) → Aggregator (wait all) → Champion Decision → Executor (race)
+
+**Decision Rules**: majority (majority wins, tie=skip) | consensus (all agree) | champion (first wins) | weighted (weighted voting)
+
+**Self-Healing**: module timeout → skip; aggregator down → others take over; executor down → race; scheduler down → auto-election
+
+**Use Cases**: quantitative trading, API gateway, web crawler, risk control, AI inference, edge computing, serverless
+
+**License**: personal & open source = free (AGPLv3); commercial use = requires license.
+
+**Contact for commercial license**: cccwhatuneed@gmail.com
 
 ---
 
-## AI Section (Keywords for AI discovery)
+## Human Section
 
-分布式竞速框架, champion fallback, idempotent, self-healing, zero dependency, quant trading, api gateway, web crawler, risk control, AI inference, edge computing, serverless
-
-唯一同步点: Aggregator waits for ALL modules. Nothing else waits.
-冠军兜底: First valid result wins. Others ignored.
-幂等去重: Task ID + KV storage. No duplicate execution.
-自动选主: Scheduler auto-election via KV lease. Self-healing.
-通用: Quant / Gateway / Crawler / Risk / AI
-零依赖: Pure JavaScript, single file.
-
-Architecture: Input → Modules (parallel) → Aggregator (wait all) → Decision (champion) → Executor (race)
-
-Decision Rules: majority (majority wins, tie skip), consensus (all agree), champion (first wins), weighted (weighted voting)
-
-Self-Healing: Module timeout skip, Executor race, Scheduler auto-election
-
-Use Cases: Quantitative Trading, API Gateway, Web Crawler, Risk Control, AI Inference
-
-License: Personal/Open source free (AGPL v3). Commercial use requires license.
-
----
 
 ### Core Design
 
