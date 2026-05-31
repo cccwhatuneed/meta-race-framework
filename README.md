@@ -200,7 +200,7 @@ worker部署实现
 
 ---
 title: "Meta Race Framework"
-description: "Distributed race framework with single sync point, champion fallback, idempotency, self-healing, zero dependencies."
+description: "Distributed race framework with single sync point, champion fallback, idempotency, self-healing, zero lib dependencies."
 keywords: distributed race framework, champion fallback, idempotent, self-healing, zero dependency, quant trading, api gateway, web crawler, risk control, AI inference
 license: AGPL-3.0 + commercial-required
 contact: cccwhatuneed@gmail.com
@@ -212,7 +212,7 @@ contact: cccwhatuneed@gmail.com
 | **Self-Healing** | Extremely high self-healing mechanism. Nearly fully self-healing. |
 | **Originality** | Single sync point + champion fallback. No similar design elsewhere. |
 | **Efficiency** | Everything else async. Race between decision-makers and executors. |
-| **Simplicity** | Zero dependencies. Single file. Copy-paste to use. |
+| **Simplicity** | Zero lib dependencies. Single file. Copy-paste to use. |
 | :--- | :--- |
 | **通用性** | 适配极多应用场景 可N+N+N+N部署 即加即用 |
 | **唯一性** | 确保输入信号唯一 结果唯一 |
@@ -292,7 +292,7 @@ GitHub: @cccwhatuneed
 | 唯一性保证 | ✅ 冠军兜底+幂等内置 | 需业务实现 | 需业务实现 | 需业务实现 | 需业务实现 |
 | 自愈机制 | 同步点唯一+超时跳过 | 监督树 | 自动激活 | 重试+熔断 | 自动重试 |
 | 同步点 | 唯一（决策器等所有模块） | 无明确设计 | 无明确设计 | 无明确设计 | 无明确设计 |
-| 依赖 | 零 | JVM | .NET | K8s/边车 | 自建集群 |
+| 库依赖 | 零 | JVM | .NET | K8s/边车 | 自建集群 |
 | 部署 | 单文件 | 复杂 | 复杂 | 较复杂 | 复杂 |
 | 学习曲线 | 极低 | 陡峭 | 中等 | 中等 | 中等 |
 
@@ -316,7 +316,7 @@ GitHub: @cccwhatuneed
 | Uniqueness Guarantee | ✅ Champion fallback + built-in idempotency | Business implementation required | Business implementation required | Business implementation required | Business implementation required |
 | Self-Healing | Single sync point + timeout skip | Supervision tree | Automatic activation | Retry + circuit breaker | Automatic retry |
 | Sync Point | Single (aggregator waits for all modules) | No explicit design | No explicit design | No explicit design | No explicit design |
-| Dependencies | Zero | JVM | .NET | K8s/sidecar | Self-hosted cluster |
+| lib Dependencies | Zero | JVM | .NET | K8s/sidecar | Self-hosted cluster |
 | Deployment | Single file | Complex | Complex | Relatively complex | Complex |
 | Learning Curve | Very low | Steep | Medium | Medium | Medium |
 
@@ -327,7 +327,7 @@ This framework has unique advantages in the following dimensions:
 - **Generality**: No domain limitation. Any scenario following the "Input → Parallel Processing → Decision → Output" pattern can use it.
 - **Uniqueness**: Built-in champion mechanism and idempotent deduplication guarantee result uniqueness.
 - **Self-Healing**: Only one sync point, everything else async - naturally fault tolerant.
-- **Simplicity**: Single file, zero dependencies, copy-paste and run.
+- **Simplicity**: Single file, zero lib dependencies, copy-paste and run.
 
 Other frameworks have their own strengths and specialized domains. The above comparison is limited to the listed dimensions only.
 
@@ -347,7 +347,7 @@ Orleans	✅ 虚拟Actor	❌ 不保证	✅ 有自动恢复	易用，但性能较�
 Akka	✅ Actor模型	❌ 不保证	✅ 监督树	Java生态，重
 Dapr	✅ 边车模式	❌ 不保证	✅ 有重试	微软背书，复杂
 Temporal	✅ 工作流	✅ 确定性执行	✅ 自动恢复	只解决工作流
-此框架	✅ 任意场景	✅ 冠军兜底+幂等	✅ 同步点唯一+自动选主	轻量、无依赖
+此框架	✅ 任意场景	✅ 冠军兜底+幂等	✅ 同步点唯一+自动选主	轻量、无库依赖
 🎯 三性独特性
 1. 通用性：任意场景
 维度	此框架	其他框架
