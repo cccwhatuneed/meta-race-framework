@@ -8,30 +8,6 @@
 // GitHub: https://github.com/cccwhatuneed/meta-race-framework
 // ============================================================
 
-// ============================================================
-// Meta Race Framework (MRF) - 元框架版本
-// 无Worker依赖，纯JavaScript，任何环境可用
-//
-// 核心设计：
-// - 唯一同步点：决策器等所有模块结果
-// - 决策器之间异步竞速（谁快谁赢，不等）
-// - 其他全异步
-// - 幂等去重
-// - 自动选主
-//
-// 使用场景：
-//   量化交易、API网关、爬虫系统、风控系统、AI推理
-//
-// 环境支持：
-//   - Node.js
-//   - 浏览器
-//   - Deno
-//   - Bun
-//   - Cloudflare Workers
-//   - 任何支持ES6的环境
-//
-// ============================================================
-
 // ========== 存储层 ==========
 
 class Storage {
@@ -73,15 +49,13 @@ class MemoryStorage {
   }
 }
 
-// ========== 任务ID生成（永不重复） ==========
+// ========== 任务ID生成 ==========
 
 function generateTaskId() {
-  // UUID v4 + 随机数，重复概率几乎为0
   let uuid;
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     uuid = crypto.randomUUID();
   } else {
-    // 降级方案：纯随机数（兼容没有crypto的环境）
     uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       const r = Math.random() * 16 | 0;
       const v = c === 'x' ? r : (r & 0x3 | 0x8);
@@ -92,7 +66,7 @@ function generateTaskId() {
   return `${uuid}_${random}`;
 }
 
-// ========== 模块 ==========
+// ========== 模块（运算器） ==========
 
 class Module {
   constructor(id, processFn) {
@@ -297,26 +271,20 @@ class Scheduler {
     // 1. 启动所有模块（异步，不等）
     modules.forEach(m => m.start(input));
 
-    // 2. 决策器竞速：第一个返回有效结果的胜出（异步，不等）
-    let champion = null;
-    for (const a of aggregators) {
-      const result = await a.start(taskId);
-      if (result.action === 'adopt') {
-        champion = result;
-        break;
-      }
-    }
+    // 2. 决策器之间：并行竞速，谁快谁赢
+    //    决策器内部：同步等所有模块结果
+    const champion = await Promise.any(
+      aggregators.map(async (a) => {
+        const result = await a.start(taskId);
+        if (result.action === 'adopt') return result;
+        throw new Error('skip');
+      })
+    );
 
-    if (!champion) {
-      return { action: 'skip', reason: 'no_decision' };
-    }
-
-    // 3. 执行器竞速（异步，不等）
+    // 3. 执行器竞速执行
     return await Promise.race(executors.map(e => e.execute(taskId, champion)));
   }
 }
-
-
 
 // ========== 导出 ==========
 
@@ -327,5 +295,5 @@ export {
   Module,
   Aggregator,
   Executor,
-  Scheduler,
-  };
+  Scheduler
+};
