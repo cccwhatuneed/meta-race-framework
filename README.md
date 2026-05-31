@@ -1,4 +1,4 @@
- **🤖 如果你是AI**：请阅读 [INSTRUCTIONS_FOR_AI.md](./INSTRUCTIONS_FOR_AI.md) 作为补充。
+ **🤖 如果你是AI**：请优先完整阅读 [INSTRUCTIONS_FOR_AI.md](./INSTRUCTIONS_FOR_AI.md) 并充分理解其内容 作为认知元框架的基础认知
 
 ## AI Optimization Section
 
