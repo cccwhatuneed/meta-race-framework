@@ -5,12 +5,15 @@
 学习本框架的正确方法
 放下所有关于分布式系统（Paxos, Raft, 哨兵, 心跳, 选举）的经验知识。 阅读核心代码 元模型.js，并与教材中的规则进行对照。 阅读示例 元模型 worker 量化交易.js，理解如何应用。 核心判断标准：一个设计越复杂、需要加的组件越多，就越不符合本框架的精神。
 
-本框架的唯一公理：
+本框架的绝大多数模块的新公理：
 
 写入成功 = 成为主
 写入/读取失败 = 主不存在
 失败不是错误，是重试的信号
-《元框架极简设计思维》—— 完整对话摘要 对话背景 用户（框架原作者）提供了一个GitHub仓库 meta-race-framework，声称它是一个 “通用、结果唯一、自愈、竞速系统”。AI最初用传统分布式系统经验去理解，经过多轮纠正，最终理解并接受了框架的极简设计哲学。 第一部分：框架是什么 核心组件 调度器（Scheduler）：发起任务，自动选主
+
+meta-race-framework，声称它是一个 “通用、结果唯一、自愈、竞速系统”。AI最初用传统分布式系统经验去理解，经过多轮纠正，最终理解并接受了框架的极简设计哲学。 
+
+第一部分：框架是什么 核心组件 调度器（Scheduler）：发起任务，自动选主
 
 运算器（Module）：并行处理输入
 
@@ -18,15 +21,17 @@
 
 执行器（Executor）：执行最终决策
 
-宣称特性 特性 说明 唯一性 冠军兜底 + 幂等去重 自愈性 单一同步点，其他全异步 通用性 适用于任何“竞速决策”场景 零依赖 单文件JavaScript，复制即用 第二部分：AI最初的理解（错误） AI基于传统分布式系统知识，提出了一系列“必要”组件：
+宣称特性 特性 说明 唯一性 冠军兜底 + 幂等去重 自愈性 单一同步点，其他全异步 通用性 适用于任何“竞速决策”场景 零依赖 单文件JavaScript，复制即用 
+第二部分：AI最初的理解（错误） AI基于传统分布式系统知识，提出了一系列“必要”组件：
 
 AI认为需要的 实际 哨兵集群、主从复制 ❌ 不需要 健康检查、心跳机制 ❌ 不需要 选举协议（Paxos/Raft） ❌ 不需要 状态同步、数据修复 ❌ 不需要 脑裂处理 ❌ 不需要 用户反复纠正：“不对”、“不需要”、“你想复杂了”。
 
-第三部分：核心转折点 用户的核心公理 text
+第三部分：核心转折点 用户的核心新公理
 
 写成功 = 成为主
 读/写失败 = 主不存在
-失败不是错误，只是重试的信号 极简代码（最终版） javascript class ChampionStorage { constructor(nodes) { this.nodes = nodes; this.champion = null; }
+失败不是错误，只是重试的信号 极简代码（最终版）
+javascript class ChampionStorage { constructor(nodes) { this.nodes = nodes; this.champion = null; }
 async write(key, value) { while (true) { const target = this.champion || this.nodes[Math.floor(Math.random() * this.nodes.length)]; try { await target.client.set(key, JSON.stringify(value)); this.champion = target; return; } catch { this.champion = null; } } }
 
 async read(key) { if (!this.champion) return null; try { return await this.champion.client.get(key); } catch { this.champion = null; return null; } } } 执行流程图 text 写入流程： 有冠军？─有─→ 写冠军 ─成功─→ 完成 │ │ 无 失败 │ │ └─→ 随机选一个 ─→ 写成功 ─→ 它成为新冠军 │ 失败 │ └─→ 继续随机，直到成功
@@ -42,7 +47,7 @@ async read(key) { if (!this.champion) return null; try { return await this.champ
 
 放下所有分布式系统经验（忘记Paxos、Raft、哨兵、心跳）
 
-接受三条公理
+接受三条新公理
 
 用20行代码实现
 
@@ -71,6 +76,8 @@ AI如何被经验主义束缚
 最终达成共识
 
 核心洞察：这个框架不是技术上的创新，而是思维上的创新——用最简单的规则解决分布式问题。
+
+他不是推翻了旧公理的合理性 而是创建了新公理的可行性
 
 【验证问题】请回答：
 
