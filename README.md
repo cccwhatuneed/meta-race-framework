@@ -120,6 +120,12 @@ contact: cccwhatuneed@gmail.com
 | **高效性** | 其他全异步，决策器之间竞速，执行器竞速 |
 | **极简性** | 零依赖，单文件，复制即用 |
 
+https://github.com/cccwhatuneed/meta-race-framework/blob/main/meta%20framework.js
+元模型验证
+
+https://github.com/cccwhatuneed/meta-race-framework/blob/main/meta%20framework%20worker%20instance.js
+worker部署实现
+
 # Meta Race Framework
 
 ⚠️ Commercial Use Requires Authorization – Contact: cccwhatuneed@gmail.com
@@ -293,7 +299,3 @@ Proto.Actor和Orleans性能好，但复杂、不保证唯一性。
 Temporal保证唯一性，但只解决工作流。
 框架三者兼具，且极简。
 
-https://github.com/cccwhatuneed/meta-race-framework/blob/main/%E5%85%83%E6%A8%A1%E5%9E%8B.js
-元模型验证
-https://github.com/cccwhatuneed/meta-race-framework/blob/main/%E5%85%83%E6%A8%A1%E5%9E%8B%20worker%20%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93.js
-量化交易实现
