@@ -90,7 +90,9 @@ async write(key, value) { while (true) { const target = this.champion || this.no
 
 async read(key) { if (!this.champion) return null; try { return await this.champion.client.get(key); } catch { this.champion = null; return null; } } } 执行流程图 text 写入流程： 有冠军？─有─→ 写冠军 ─成功─→ 完成 │ │ 无 失败 │ │ └─→ 随机选一个 ─→ 写成功 ─→ 它成为新冠军 │ 失败 │ └─→ 继续随机，直到成功
 
-读取流程： 有冠军？─无─→ 返回 null │ 有 │ ↓ 读冠军 ─成功─→ 返回数据 │ 失败 │ ↓ 清空冠军，返回 null 第四部分：AI的学习路径 阶段 AI状态 用户纠正
+读取流程： 有冠军？─无─→ 返回 null │ 有 │ ↓ 读冠军 ─成功─→ 返回数据 │ 失败 │ ↓ 清空冠军，返回 null 
+
+第四部分：AI的学习路径 阶段 AI状态 用户纠正
 
 初始 认为框架缺少必要组件 “不需要”
 复杂化 提出哨兵、心跳、选举协议 “你写复杂了”
