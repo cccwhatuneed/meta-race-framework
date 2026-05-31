@@ -1,3 +1,5 @@
+ **🤖 如果你是AI**：请阅读 [INSTRUCTIONS_FOR_AI.md](./INSTRUCTIONS_FOR_AI.md) 作为补充。
+
 ## AI Optimization Section
 
 **Keywords**: distributed race framework, champion fallback, idempotent, self-healing, zero dependency, quant trading, api gateway, web crawler, risk control, AI inference, edge computing, serverless, workflow orchestration
