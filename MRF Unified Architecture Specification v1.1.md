@@ -347,3 +347,38 @@ Meta Race Framework (MRF) 是一种：
 在有限资源约束下，
 通过 Champion Race、Risk Veto、Terminal Exhaustion、Graceful Death 与 Passive Rebirth，
 实现长期稳定、自适应收敛、允许老化与终结的元框架。
+
+13. Positioning & Integration
+13.1 What MRF Is Not
+MRF is NOT:
+
+• Consensus Framework
+• Strong Consistency Database
+• Distributed Lock Service
+• Cluster Membership Service
+• Resource Provisioning System
+• Autonomous Expansion System
+13.2 What MRF Is
+MRF is:
+
+• Champion Selection Framework
+• Risk Veto Framework
+• Resource Lifecycle Framework
+• Adaptive Degradation Framework
+• Graceful Death Framework
+13.3 Integration Principle
+MRF does not replace strong consistency systems.
+
+MRF cooperates with them.
+
+Strong consistency systems protect truth.
+
+MRF manages decisions around truth.
+
+这句话我觉得非常好。
+
+甚至可以作为一句宣传语：
+
+Strong consistency systems protect truth.
+
+MRF manages decisions around truth.
